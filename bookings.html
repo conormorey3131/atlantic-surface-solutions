@@ -19,7 +19,7 @@
       <img src="assets/logo.png" alt="Atlantic Surface Solutions — Eco Laser Cleaning / Surface Restoration" />
     </a>
     <div class="header-right">
-      <nav>
+      <nav id="siteNav">
         <a href="index.html">Home</a>
         <a href="underbody-restoration.html">Underbody</a>
         <a href="mobile-laser-cleaning.html">Mobile Laser</a>
@@ -27,6 +27,7 @@
         <a href="bookings.html" class="active">Bookings</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
       <a class="header-call" href="tel:+353872145863">087 214 5863</a>
       <a class="btn btn-green btn-sm" href="bookings.html">Book an Inspection</a>
     </div>
@@ -121,6 +122,25 @@
     </nav>
   </div>
 </footer>
+
+<script>
+(function () {
+  var btn = document.querySelector('.menu-btn'), hdr = document.querySelector('header');
+  if (!btn || !hdr) return;
+  btn.addEventListener('click', function () {
+    var open = hdr.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  hdr.querySelectorAll('nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      hdr.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -40,6 +40,11 @@ nav a:hover{border-bottom-color:var(--green)}
 nav a.active{border-bottom-color:var(--green);color:var(--green-d)}
 .header-call{font-family:'Archivo',sans-serif;font-weight:800;font-size:.95rem;color:var(--ink);text-decoration:none;white-space:nowrap}
 .header-call:hover{color:var(--blue)}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;padding:10px 2px}
+.menu-btn span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .18s ease,opacity .18s ease}
+header.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+header.open .menu-btn span:nth-child(2){opacity:0}
+header.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .btn{display:inline-block;font-family:'Archivo',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:13px 22px;border-radius:8px;transition:background .15s ease,color .15s ease,border-color .15s ease}
 .btn-green{background:var(--green);color:#fff}
 .btn-green:hover{background:var(--green-d)}
@@ -48,8 +53,14 @@ nav a.active{border-bottom-color:var(--green);color:var(--green-d)}
 .btn-outline:hover{border-color:var(--green-bright);color:#fff}
 .btn-dark{background:var(--ink);color:#fff}
 .btn-dark:hover{background:var(--ink-2)}
-@media (max-width:1060px){ nav{display:none} }
-@media (max-width:560px){ .header-call{display:none} .logo-link img{height:42px} }
+@media (max-width:1060px){
+  .menu-btn{display:block}
+  header nav{display:none}
+  header.open nav{display:flex;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:8px 20px 14px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(10,25,40,.08);z-index:70}
+  header.open nav a{padding:11px 0;border-bottom:1px solid var(--line)}
+  header.open nav a:last-child{border-bottom:none}
+}
+@media (max-width:560px){ .header-call{display:none} .header-right .btn{display:none} .logo-link img{height:42px} }
 
 /* Hero (home) */
 .hero{background:var(--ink);color:#c7d2dc;position:relative}
